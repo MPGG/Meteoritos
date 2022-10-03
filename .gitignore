@@ -1,0 +1,13 @@
+# De godot
+.import/
+export.cfg
+export_presets.cfg
+
+*.translation
+
+.mono/
+data_*/
+
+Builds/
+
+TemporalAssets/
