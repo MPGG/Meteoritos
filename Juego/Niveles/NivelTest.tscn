@@ -4,7 +4,7 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="RigidBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 101, 44 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 470, 319 )
 gravity_scale = 0.0
 can_sleep = false
