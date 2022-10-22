@@ -3,7 +3,7 @@ extends RigidBody2D
 
 #Exports
 export var potencia_motor:int = 20
-export var potencia_rotacion:int = 40
+export var potencia_rotacion:int = 170
 
 #Atributos
 var empuje:Vector2 = Vector2.ZERO

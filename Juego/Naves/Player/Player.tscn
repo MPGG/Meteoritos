@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://TemporalAssets/spaceshooter/PNG/playerShip1_red.png" type="Texture" id=1]
+[ext_resource path="res://Juego/Naves/Player/playerShip1_red-ex.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/Player/Player.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=2]
