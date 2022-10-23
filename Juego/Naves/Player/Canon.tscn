@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Juego/Naves/Player/Canon.gd" type="Script" id=1]
+[ext_resource path="res://Juego/Proyectiles/ProyectilJugador.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Naves/Player/fxPlayerFiring.ogg" type="AudioStream" id=3]
+
+[node name="Canon" type="Node2D"]
+script = ExtResource( 1 )
+proyectil = ExtResource( 2 )
+cadencia_disparo = 0.25
+velocidad_proyectil = 1200
+
+[node name="PuntoIzq" type="Position2D" parent="."]
+position = Vector2( -24, 0 )
+
+[node name="PuntoDer" type="Position2D" parent="."]
+position = Vector2( 24, 0 )
+
+[node name="DisparoSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+bus = "FX"
+
+[node name="TimerCooldown" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerCooldown" to="." method="_on_TimerCooldown_timeout"]

@@ -9,6 +9,8 @@ export var potencia_rotacion:int = 170
 var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0
 
+onready var canon = $Canon
+
 
 #Metodos
 
@@ -30,4 +32,9 @@ func playerInput() -> void:
 	if Input.is_action_pressed("turnRight"):
 		dir_rotacion += 1
 	elif Input.is_action_pressed("turnLeft"):
-		dir_rotacion += -1  
+		dir_rotacion += -1
+	
+	if Input.is_action_pressed("fire"):
+		canon.set_esta_disparando(true)
+	if Input.is_action_just_released("fire"):
+		canon.set_esta_disparando(false)
