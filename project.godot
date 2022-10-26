@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Proyectil",
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/ProyectilJugador.gd"
+}, {
+"base": "Reference",
+"class": "RayoLaser",
+"language": "GDScript",
+"path": "res://Juego/Proyectiles/LaserBeamCPU/LaserBeam2D.gd"
 } ]
 _global_script_class_icons={
 "Canon": "",
 "Player": "",
-"Proyectil": ""
+"Proyectil": "",
+"RayoLaser": ""
 }
 
 [application]
@@ -77,6 +83,12 @@ fire={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+fire2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
@@ -84,7 +96,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

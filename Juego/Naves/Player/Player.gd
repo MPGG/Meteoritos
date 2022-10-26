@@ -9,10 +9,17 @@ export var potencia_rotacion:int = 170
 var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0
 
+#Onreadys
 onready var canon = $Canon
-
+onready var laser = $LaserBeam2D
 
 #Metodos
+
+func _unhandled_input(event) -> void:
+	if event.is_action_pressed("fire2"):
+		laser.set_is_casting(true)
+	if event.is_action_released("fire2"):
+		laser.set_is_casting(false)
 
 func _integrate_forces(state) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
