@@ -64,6 +64,7 @@ func cambiar_estado(estado: int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled",true)
 			canon.set_puede_disparar(true)
+			Eventos.emit_signal("nave_destruida",global_position,3)
 			queue_free()
 		_:
 			printerr("Error de estado de jugador")
@@ -93,6 +94,8 @@ func esta_input_activo() -> bool:
 		return false
 	return true
 
+func destruirNave():
+	cambiar_estado(ESTADO.MUERTO)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "spawn":
