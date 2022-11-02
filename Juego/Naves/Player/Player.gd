@@ -4,6 +4,8 @@ extends RigidBody2D
 #Exports
 export var potencia_motor:int = 20
 export var potencia_rotacion:int = 170
+export var estela_maxima:int = 150
+
 
 #Atributos
 var empuje:Vector2 = Vector2.ZERO
@@ -12,6 +14,8 @@ var dir_rotacion:int = 0
 #Onreadys
 onready var canon = $Canon
 onready var laser = $LaserBeam2D
+onready var estela: Estela = $Pos2DTrailInicio/Trail2D
+onready var motor_sfx:Motor = $SfxMotor
 
 #Metodos
 
@@ -20,6 +24,16 @@ func _unhandled_input(event) -> void:
 		laser.set_is_casting(true)
 	if event.is_action_released("fire2"):
 		laser.set_is_casting(false)
+	
+	if event.is_action_pressed("moveForward"):
+		estela.s_max_points(estela_maxima)
+		motor_sfx.sonido_on()
+	elif event.is_action_pressed("moveBackwards"):
+		estela.s_max_points(0)
+		motor_sfx.sonido_on()
+	
+	if (event.is_action_released("moveForward") or event.is_action_released("moveBackwards")):
+		motor_sfx.sonido_off()
 
 func _integrate_forces(state) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
