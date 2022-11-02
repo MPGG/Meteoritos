@@ -7,6 +7,10 @@
 extents = Vector2( 5, 27 )
 
 [node name="ProyectilJugador" type="Area2D"]
+z_index = 40
+z_as_relative = false
+collision_layer = 16
+collision_mask = 22
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
