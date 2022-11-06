@@ -111,6 +111,6 @@ func set_emitting(emitting: bool) -> void:
 		_last_point = to_local(target.global_position) + calculate_offset()
 
 func s_max_points(points:int) -> void:
-	print("Estela: set max points")
+	#print("Estela: set max points")
 	max_points = points
 	
