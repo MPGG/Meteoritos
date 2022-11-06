@@ -9,7 +9,7 @@ extents = Vector2( 5, 27 )
 [node name="ProyectilJugador" type="Area2D"]
 z_index = 40
 z_as_relative = false
-collision_layer = 16
+collision_layer = 8
 collision_mask = 22
 script = ExtResource( 2 )
 
@@ -27,4 +27,6 @@ position = Vector2( 8, -5.68434e-14 )
 rotation = 1.5708
 scale = Vector2( 0.525, 1.85 )
 
+[connection signal="area_entered" from="." to="." method="_on_ProyectilJugador_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_ProyectilJugador_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

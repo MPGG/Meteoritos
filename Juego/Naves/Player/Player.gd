@@ -5,6 +5,7 @@ extends RigidBody2D
 export var potencia_motor:int = 20
 export var potencia_rotacion:int = 170
 export var estela_maxima:int = 150
+export var hitpoints:float = 100.0
 
 #Enum
 enum ESTADO {SPAWN, VIVO, INVENCIBLE, MUERTO}
@@ -19,6 +20,7 @@ onready var canon = $Canon
 onready var laser = $LaserBeam2D
 onready var estela: Estela = $Pos2DTrailInicio/Trail2D
 onready var motor_sfx:Motor = $SfxMotor
+onready var hit_sfx:AudioStreamPlayer = $SfxHit
 onready var colisionador: CollisionShape2D = $CollisionShape2D
 
 #Callbacks
@@ -100,3 +102,8 @@ func destruirNave():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "spawn":
 		cambiar_estado(ESTADO.VIVO)
+func recibir_dmg(dmg:float):
+	hitpoints -= dmg
+	if hitpoints <= 0:
+		destruirNave()
+	hit_sfx.play()

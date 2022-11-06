@@ -55,7 +55,7 @@ func disparar() -> void:
 			dmg_proyectil
 		)
 		Eventos.emit_signal("proyectilDisparado",new_proyectil)
-		print("disparanding")
+		#print("disparanding")
 	
 
 

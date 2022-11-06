@@ -25,6 +25,7 @@ onready var line_width: float = fill.width
 
 onready var laser_sfx: AudioStreamPlayer2D = $LaserFX
 
+var dmg:float = 5
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -33,7 +34,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	cast_to = (cast_to + Vector2.RIGHT * cast_speed * delta).clamped(max_length)
-	cast_beam()
+	cast_beam(delta)
 
 
 func set_is_casting(cast: bool) -> void:
@@ -56,7 +57,7 @@ func set_is_casting(cast: bool) -> void:
 
 # Controls the emission of particles and extends the Line2D to `cast_to` or the ray's 
 # collision point, whichever is closest.
-func cast_beam() -> void:
+func cast_beam(delta) -> void:
 	var cast_point := cast_to
 
 	force_raycast_update()
@@ -66,6 +67,8 @@ func cast_beam() -> void:
 		cast_point = to_local(get_collision_point())
 		collision_particles.global_rotation = get_collision_normal().angle()
 		collision_particles.position = cast_point
+		if get_collider().has_method("recibir_dmg"):
+			get_collider().recibir_dmg(dmg * delta)
 
 	fill.points[1] = cast_point
 	beam_particles.position = cast_point * 0.5
