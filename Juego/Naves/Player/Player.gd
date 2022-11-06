@@ -22,6 +22,7 @@ onready var estela: Estela = $Pos2DTrailInicio/Trail2D
 onready var motor_sfx:Motor = $SfxMotor
 onready var hit_sfx:AudioStreamPlayer = $SfxHit
 onready var colisionador: CollisionShape2D = $CollisionShape2D
+onready var escudo:Escudo = $Escudo
 
 #Callbacks
 func _ready() -> void:
@@ -44,6 +45,8 @@ func _unhandled_input(event) -> void:
 	
 	if (event.is_action_released("moveForward") or event.is_action_released("moveBackwards")):
 		motor_sfx.sonido_off()
+	if (event.is_action_pressed("shield") and not escudo.get_esta_activado()):
+		escudo.activar()
 
 func _integrate_forces(state) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
