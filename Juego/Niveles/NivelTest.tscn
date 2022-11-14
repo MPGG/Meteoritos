@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -6,21 +6,45 @@
 [ext_resource path="res://Juego/Enemigos/EnemyDummy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Explosion/Explosion.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/Meteoritos/MeteoritoSpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Juego/Meteoritos/MeteoritoExplosion/ExplosionMeteoro.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Juego/Niveles/Fondos/darkPurple.png" type="Texture" id=9]
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
 explosion = ExtResource( 5 )
 meteorito = ExtResource( 6 )
+explosion_meteorito = ExtResource( 8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 470, 319 )
-can_sleep = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
 [node name="EnemyDummy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 118, 521 )
+position = Vector2( 49, 704 )
 
-[node name="Meteorito" parent="." instance=ExtResource( 6 )]
-position = Vector2( 203, 298 )
+[node name="MeteoritoSpawner" parent="." instance=ExtResource( 7 )]
+position = Vector2( -230, -258 )
+
+[node name="MeteoritoSpawner2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1229, -227 )
+direccion = Vector2( -0.5, 1 )
+
+[node name="MeteoritoSpawner11" parent="." instance=ExtResource( 7 )]
+position = Vector2( -127, 870 )
+direccion = Vector2( 1, -1 )
+
+[node name="MeteoritoSpawner4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1092, 844 )
+direccion = Vector2( -1, -1 )

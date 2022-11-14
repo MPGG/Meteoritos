@@ -110,3 +110,9 @@ func recibir_dmg(dmg:float):
 	if hitpoints <= 0:
 		destruirNave()
 	hit_sfx.play()
+
+
+func _on_Player_body_entered(body):
+	if body is Meteorito:
+		body.destruir()
+		destruirNave()

@@ -9,7 +9,7 @@ onready var cont_meteoritos:Node
 export var explosion:PackedScene = null
 
 export var meteorito:PackedScene = null
-
+export var explosion_meteorito:PackedScene = null
 
 
 #Callbacks
@@ -22,6 +22,7 @@ func conectarSenales() -> void:
 	Eventos.connect("proyectilDisparado",self,"_on_disparo")
 	Eventos.connect("nave_destruida",self,"_on_Nave_Destruida")
 	Eventos.connect("spawn_meteorito",self,"_on_spawn_meteoritos")
+	Eventos.connect("meteorito_destruido",self,"_on_meteorito_destruido")
 
 func crearContenedores() -> void:
 	cont_proyectiles = Node.new()
@@ -41,10 +42,15 @@ func _on_Nave_Destruida(pos:Vector2,num):
 		add_child(new_expl)
 		yield(get_tree().create_timer(0.6),"timeout")
 
-func _on_spawn_meteoritos(pos_spawn:Vector2, dir_meteorito:Vector2):
+func _on_spawn_meteoritos(pos_spawn:Vector2, dir_meteorito:Vector2, tamanio:float):
 	var new_meteorito:Meteorito = meteorito.instance()
 	new_meteorito.crear(
 		pos_spawn,
-		dir_meteorito		
+		dir_meteorito,
+		tamanio		
 	)
 	cont_meteoritos.add_child(new_meteorito)
+func _on_meteorito_destruido(pos: Vector2):
+	var new_explosion:ExplosionMeteorito = explosion_meteorito.instance()
+	new_explosion.global_position = pos
+	add_child(new_explosion)
