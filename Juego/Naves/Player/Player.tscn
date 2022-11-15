@@ -49,7 +49,7 @@ tracks/0/keys = {
 [node name="Player" type="RigidBody2D"]
 z_index = 50
 z_as_relative = false
-collision_mask = 22
+collision_mask = 54
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
 contacts_reported = 2
@@ -95,6 +95,9 @@ anims/spawn = SubResource( 4 )
 stream = ExtResource( 7 )
 
 [node name="Escudo" parent="." instance=ExtResource( 8 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

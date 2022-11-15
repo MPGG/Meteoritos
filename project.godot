@@ -49,10 +49,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/ProyectilJugador.gd"
 }, {
-"base": "RayCast2D",
+"base": "Reference",
 "class": "RayoLaser",
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/LaserBeamCPU/LaserBeam2D.gd"
+}, {
+"base": "Node2D",
+"class": "SectorMeteoritos",
+"language": "GDScript",
+"path": "res://Juego/Meteoritos/SectorMeteoritos.gd"
 } ]
 _global_script_class_icons={
 "Canon": "",
@@ -63,7 +68,8 @@ _global_script_class_icons={
 "Motor": "",
 "Player": "",
 "Proyectil": "",
-"RayoLaser": ""
+"RayoLaser": "",
+"SectorMeteoritos": ""
 }
 
 [application]
@@ -137,6 +143,8 @@ shield={
 2d_physics/layer_3="meteorito"
 2d_physics/layer_4="proyectil_player"
 2d_physics/layer_5="proyectil_enemigo"
+2d_physics/layer_6="paredes"
+2d_physics/layer_7="dectector_meteoritos"
 
 [physics]
 
