@@ -14,7 +14,7 @@ export var sector_meteoritos:PackedScene = null
 
 export var tiempo_transicion_camara:float = 1.6
 
-
+var meteoritos_totales:int = 0
 
 
 #Callbacks
@@ -63,6 +63,8 @@ func _on_meteorito_destruido(pos: Vector2):
 	var new_explosion:ExplosionMeteorito = explosion_meteorito.instance()
 	new_explosion.global_position = pos
 	add_child(new_explosion)
+	
+	controlar_meteoritos_restantes()
 
 func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_peligros:int):
 	if tipo_peligro == "Meteorito":
@@ -73,26 +75,47 @@ func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_pel
 		pass
 
 func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int):
+	meteoritos_totales = numero_peligros
 	var new_sector_meteoritos:SectorMeteoritos = sector_meteoritos.instance()
 	new_sector_meteoritos.crear(centro_camara, numero_peligros)
 	camara_nivel.global_position = centro_camara
 	#camara_nivel.current = true
 	contenedor_sector_meteoritos.add_child(new_sector_meteoritos)
+	$Player/CameraPlayer.devolver_zoom_original()
 	transicion_camaras(
-		$Player/Camera2D.global_position,
+		$Player/CameraPlayer.global_position,
 		camara_nivel.global_position,
-		camara_nivel
+		camara_nivel,
+		tiempo_transicion_camara
 	)
 
-func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D):
+func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D, tiempo_transicion:float):
 	$TweenCamara.interpolate_property(
 		camara_actual,
 		"global_position",
 		desde,
 		hasta,
-		tiempo_transicion_camara,
+		tiempo_transicion,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
 	camara_actual.current = true
 	$TweenCamara.start()
+
+func controlar_meteoritos_restantes():
+	meteoritos_totales -= 1
+	#print("Nivel.gd:Metoeritos totales:" + str(meteoritos_totales))
+	if meteoritos_totales == 0:
+		contenedor_sector_meteoritos.get_child(0).queue_free()
+		$Player/CameraPlayer.set_puede_hacer_zoom(true)
+		transicion_camaras(
+			camara_nivel.global_position,
+			$Player/CameraPlayer.global_position,
+			$Player/CameraPlayer,
+			tiempo_transicion_camara * 0.1
+		)
+
+
+func _on_TweenCamara_tween_completed(object: Object, key:NodePath):
+	if object.name == "CameraPlayer":
+		object.global_position = $Player.global_position

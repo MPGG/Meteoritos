@@ -14,6 +14,8 @@ var esta_en_sector:bool = true setget set_esta_en_sector
 var pos_spawn_original:Vector2
 var vel_spawn_original:Vector2
 
+var esta_destruido:bool = false
+
 func _ready():
 	angular_velocity = vel_ang_base
 
@@ -53,7 +55,8 @@ func _integrate_forces(state:Physics2DDirectBodyState):
 
 func recibir_dmg(dmg:float):
 	hitpoints -= dmg
-	if hitpoints <= 0:
+	if hitpoints <= 0 and not esta_destruido:
+		esta_destruido = true
 		destruir()
 	animator.play("impact")
 	impacto_sfx.play()
