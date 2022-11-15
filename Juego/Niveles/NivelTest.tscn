@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Juego/Meteoritos/MeteoritoExplosion/ExplosionMeteoro.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Niveles/Fondos/darkPurple.png" type="Texture" id=9]
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -43,6 +44,9 @@ position = Vector2( 280, 134 )
 tipo_peligro = "Meteorito"
 
 [node name="CameraNivel" type="Camera2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="TweenZoom" type="Tween" parent="CameraNivel"]
 
 [node name="TweenCamara" type="Tween" parent="."]
 
