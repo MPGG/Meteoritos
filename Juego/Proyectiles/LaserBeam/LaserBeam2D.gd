@@ -26,8 +26,14 @@ onready var line_width: float = fill.width
 onready var laser_sfx: AudioStreamPlayer2D = $LaserFX
 
 var dmg:float = 5
+var energia_original:float
+
+export var radio_dmg:float = 4.0
+export var energia:float = 4.0
+export var radio_desgaste:float = - 1.0
 
 func _ready() -> void:
+	energia_original = energia
 	set_physics_process(false)
 	fill.points[1] = Vector2.ZERO
 
@@ -58,6 +64,14 @@ func set_is_casting(cast: bool) -> void:
 # Controls the emission of particles and extends the Line2D to `cast_to` or the ray's 
 # collision point, whichever is closest.
 func cast_beam(delta) -> void:
+	
+	if energia <= 0.0:
+		#print("LaserBeam.gd: sin power wacho")
+		set_is_casting(false)
+		return
+	controlar_energia(radio_desgaste*delta)	
+	#energia += radio_desgaste * delta
+	
 	var cast_point := cast_to
 
 	force_raycast_update()
@@ -74,6 +88,11 @@ func cast_beam(delta) -> void:
 	beam_particles.position = cast_point * 0.5
 	beam_particles.process_material.emission_box_extents.x = cast_point.length() * 0.5
 
+func controlar_energia(consumo:float):
+	energia += consumo
+	print("Laserbeam.gd: Energia Laser: ", energia)
+	if energia > energia_original:
+		energia = energia_original
 
 func appear() -> void:
 	if tween.is_active():

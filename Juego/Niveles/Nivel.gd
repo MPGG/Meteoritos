@@ -45,10 +45,18 @@ func crearContenedores() -> void:
 func _on_disparo(p:Proyectil):
 	cont_proyectiles.add_child(p)
 
-func _on_Nave_Destruida(pos:Vector2,num):
+func _on_Nave_Destruida(nave: Player, pos:Vector2,num):
+	if nave is Player:
+		transicion_camaras(
+			pos,
+			pos + crear_posicion_aleatoria(-200.0,200),
+			camara_nivel,
+			tiempo_transicion_camara
+		)
+	
 	for i in range(num):
 		var new_expl:Node2D = explosion.instance()
-		new_expl.global_position = pos
+		new_expl.global_position = pos + crear_posicion_aleatoria(-50.0,50.0)
 		add_child(new_expl)
 		yield(get_tree().create_timer(0.6),"timeout")
 
@@ -119,6 +127,14 @@ func controlar_meteoritos_restantes():
 		)
 
 
+
 func _on_TweenCamara_tween_completed(object: Object, key:NodePath):
 	if object.name == "CameraPlayer":
 		object.global_position = $Player.global_position
+
+func crear_posicion_aleatoria(rango_h:float, rango_v:float) -> Vector2:
+	randomize()
+	var randx = rand_range(-rango_h, rango_h)
+	var randy = rand_range(-rango_v,rango_v)
+	return Vector2(randx,randy)
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Juego/Meteoritos/MeteoritoExplosion/meteorBrown_small1.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Meteoritos/MeteoritoExplosion/meteorBrown_tiny2.png" type="Texture" id=2]
@@ -9,10 +9,10 @@
 [ext_resource path="res://Juego/Meteoritos/MeteoritoExplosion/explosionCrunch_002.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Juego/Meteoritos/MeteoritoExplosion/ExplosionMeteoro.gd" type="Script" id=8]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("MeteorBrownMed1:position")
+tracks/0/path = NodePath("MeteorBrownMed3:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -21,10 +21,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -55, -60 ) ]
+"values": [ Vector2( 190, -142 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MeteorBrownMed1:rotation_degrees")
+tracks/1/path = NodePath("MeteorBrownMed3:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -33,10 +33,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 60.1207 ]
+"values": [ 145.395 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("MeteorBrownMed1:scale")
+tracks/2/path = NodePath("MeteorBrownMed3:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -45,10 +45,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.435546, 0.43549 ) ]
+"values": [ Vector2( 0.0535785, 0.0468744 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("MeteorBrownMed3:position")
+tracks/3/path = NodePath("MeteorBrownMed1:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -57,10 +57,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -58, 40 ) ]
+"values": [ Vector2( 131, 54 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MeteorBrownMed3:rotation_degrees")
+tracks/4/path = NodePath("MeteorBrownMed1:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -69,10 +69,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 170.353 ]
+"values": [ 71.4409 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MeteorBrownMed3:scale")
+tracks/5/path = NodePath("MeteorBrownMed1:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -81,7 +81,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.369052, 0.355645 ) ]
+"values": [ Vector2( 0.0783734, 0.0532196 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("MeteorBrownSmall2:position")
@@ -93,7 +93,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -148, -36 ) ]
+"values": [ Vector2( -91, -156 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("MeteorBrownSmall2:rotation_degrees")
@@ -117,115 +117,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.400001, 0.48 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("MeteorBrownTiny1:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 44, -117 ) ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("MeteorBrownTiny1:rotation_degrees")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -27.349 ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("MeteorBrownTiny1:scale")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.500147, 0.605508 ) ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("MeteorBrownTiny2:position")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 30, 79 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("MeteorBrownTiny2:rotation_degrees")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 52.1051 ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("MeteorBrownTiny2:scale")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.213877, 0.172194 ) ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("MeteorBrownSmall1:position")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 166, -1 ) ]
-}
-tracks/16/type = "value"
-tracks/16/path = NodePath("MeteorBrownSmall1:rotation_degrees")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 125.543 ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("MeteorBrownSmall1:scale")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.186257, 0.186288 ) ]
+"values": [ Vector2( 0.0638776, 0.129555 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -448,49 +340,491 @@ tracks/17/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.0535785, 0.0468744 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "explode2"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeteorBrownTiny2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( -107, -114 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeteorBrownTiny2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 52.1051 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeteorBrownMed1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( -38, -163 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeteorBrownMed1:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 71.4409 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MeteorBrownSmall1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( 56, 110 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MeteorBrownSmall1:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 125.543 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MeteorBrownTiny1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( 136, 43 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MeteorBrownTiny1:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -27.349 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MeteorBrownSmall2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( -194, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MeteorBrownSmall2:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 20.985 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("MeteorBrownMed3:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( -160, 91 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("MeteorBrownMed3:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 145.395 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("MeteorBrownTiny2:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.213877, 0.172194 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("MeteorBrownMed1:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.0783734, 0.0532196 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("MeteorBrownSmall1:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.186257, 0.186288 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("MeteorBrownTiny1:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.149046, 0.114915 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("MeteorBrownSmall2:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.0638776, 0.129555 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("MeteorBrownMed3:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.0535785, 0.0468744 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "explode3"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeteorBrownTiny2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( -107, -114 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeteorBrownTiny2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 52.1051 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeteorBrownMed1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( 131, 54 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeteorBrownMed1:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 71.4409 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MeteorBrownSmall1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( 56, 110 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MeteorBrownSmall1:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 125.543 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MeteorBrownTiny1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( 136, 43 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MeteorBrownTiny1:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -27.349 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MeteorBrownSmall2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( -91, -156 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MeteorBrownSmall2:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 20.985 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("MeteorBrownMed3:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ), Vector2( -16, -171 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("MeteorBrownMed3:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 145.395 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("MeteorBrownTiny2:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.213877, 0.172194 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("MeteorBrownMed1:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.0783734, 0.0532196 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("MeteorBrownSmall1:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.186257, 0.186288 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("MeteorBrownTiny1:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.149046, 0.114915 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("MeteorBrownSmall2:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.0638776, 0.129555 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("MeteorBrownMed3:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.0535785, 0.0468744 ) ]
+}
+
 [node name="ExplosionMeteoro" type="Node2D"]
 script = ExtResource( 8 )
 
 [node name="MeteorBrownMed1" type="Sprite" parent="."]
-position = Vector2( -55, -60 )
-rotation = 1.0493
-scale = Vector2( 0.435546, 0.43549 )
+position = Vector2( 131, 54 )
+rotation = 1.24688
+scale = Vector2( 0.0783734, 0.0532196 )
 texture = ExtResource( 3 )
 
 [node name="MeteorBrownMed3" type="Sprite" parent="."]
-position = Vector2( -58, 40 )
-rotation = 2.97321
-scale = Vector2( 0.369052, 0.355645 )
+position = Vector2( 190, -142 )
+rotation = 2.53762
+scale = Vector2( 0.0535785, 0.0468744 )
 texture = ExtResource( 5 )
 
 [node name="MeteorBrownSmall1" type="Sprite" parent="."]
-position = Vector2( 166, -1 )
+position = Vector2( 56, 110 )
 rotation = 2.19114
 scale = Vector2( 0.186257, 0.186288 )
 texture = ExtResource( 1 )
 
 [node name="MeteorBrownSmall2" type="Sprite" parent="."]
-position = Vector2( -148, -36 )
-rotation = 0.366258
-scale = Vector2( 0.400001, 0.48 )
+position = Vector2( -91, -156 )
+rotation = 0.366257
+scale = Vector2( 0.0638776, 0.129555 )
 texture = ExtResource( 6 )
 
 [node name="MeteorBrownTiny1" type="Sprite" parent="."]
-position = Vector2( 44, -117 )
+position = Vector2( 136, 43 )
 rotation = -0.47733
-scale = Vector2( 0.500147, 0.605508 )
+scale = Vector2( 0.149046, 0.114915 )
 texture = ExtResource( 4 )
 
 [node name="MeteorBrownTiny2" type="Sprite" parent="."]
-position = Vector2( 30, 79 )
+position = Vector2( -107, -114 )
 rotation = 0.909406
 scale = Vector2( 0.213877, 0.172194 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "explode"
-anims/RESET = SubResource( 1 )
+anims/RESET = SubResource( 3 )
 anims/explode = SubResource( 2 )
+anims/explode2 = SubResource( 4 )
+anims/explode3 = SubResource( 5 )
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )

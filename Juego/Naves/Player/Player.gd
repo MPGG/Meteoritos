@@ -17,12 +17,17 @@ var estado_actual:int = ESTADO.SPAWN
 
 #Onreadys
 onready var canon = $Canon
-onready var laser = $LaserBeam2D
+onready var laser = $LaserBeam2D setget ,get_laser
 onready var estela: Estela = $Pos2DTrailInicio/Trail2D
 onready var motor_sfx:Motor = $SfxMotor
 onready var hit_sfx:AudioStreamPlayer = $SfxHit
 onready var colisionador: CollisionShape2D = $CollisionShape2D
-onready var escudo:Escudo = $Escudo
+onready var escudo:Escudo = $Escudo setget ,get_escudo
+
+func get_laser() -> RayoLaser:
+	return laser
+func get_escudo() -> Escudo:
+	return escudo
 
 #Callbacks
 func _ready() -> void:
@@ -68,8 +73,8 @@ func cambiar_estado(estado: int) -> void:
 			colisionador.set_deferred("disabled", true)
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled",true)
-			canon.set_puede_disparar(true)
-			Eventos.emit_signal("nave_destruida",global_position,3)
+			canon.set_puede_disparar(false)
+			Eventos.emit_signal("nave_destruida",self, global_position,3)
 			queue_free()
 		_:
 			printerr("Error de estado de jugador")
