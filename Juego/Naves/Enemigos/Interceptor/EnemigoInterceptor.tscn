@@ -11,7 +11,7 @@ friction = 0.0
 bounce = 0.5
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 27.0185
+radius = 40.1995
 
 [sub_resource type="Animation" id=3]
 resource_name = "default"
@@ -41,7 +41,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.793289 ),
 "transitions": PoolRealArray( 1, 0.164939 ),
 "update": 0,
-"values": [ Vector2( 0.05, 0.05 ), Vector2( 0.2, 0.2 ) ]
+"values": [ Vector2( 0.05, 0.05 ), Vector2( 0.4, 0.4 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("SpriteSpawn:scale")
@@ -56,11 +56,11 @@ tracks/1/keys = {
 "values": [ Vector2( 1.5, 1.5 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 432.843
-
 [sub_resource type="CircleShape2D" id=2]
 radius = 779.311
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 432.843
 
 [node name="EnemigoInterceptor" instance=ExtResource( 1 )]
 collision_layer = 2
@@ -70,9 +70,12 @@ contacts_reported = 4
 contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
+hitpoints = 20.0
+potencia_max = 600.0
 
 [node name="Sprite" parent="." index="0"]
 rotation = -1.5708
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -88,20 +91,24 @@ anims/default = SubResource( 3 )
 anims/spawn = SubResource( 4 )
 
 [node name="SpriteSpawn" type="Sprite" parent="." index="5"]
-scale = Vector2( 0.365483, 0.365483 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
 
 [node name="AreaDisparo" type="Area2D" parent="." index="6"]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDisparo" index="0"]
-shape = SubResource( 1 )
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AreaDisparo" index="0"]
+shape = SubResource( 2 )
 
 [node name="AreaDeteccion" type="Area2D" parent="." index="7"]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" index="0"]
-shape = SubResource( 2 )
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaDeteccion" index="0"]
+shape = SubResource( 1 )
 
 [connection signal="body_entered" from="." to="." method="_on_EnemigoInterceptor_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="AreaDisparo" to="." method="_on_AreaDisparo_body_entered"]
+[connection signal="body_exited" from="AreaDisparo" to="." method="_on_AreaDisparo_body_exited"]
+[connection signal="body_entered" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_entered"]
+[connection signal="body_exited" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_exited"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactMetal_000.ogg-9712f6be006020a3b7ffc00db5ab41cd.oggstr"
+
+[deps]
+
+source_file="res://Juego/Naves/impactMetal_000.ogg"
+dest_files=[ "res://.import/impactMetal_000.ogg-9712f6be006020a3b7ffc00db5ab41cd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

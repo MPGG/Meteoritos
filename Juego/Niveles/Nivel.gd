@@ -7,21 +7,25 @@ onready var cont_meteoritos:Node
 onready var camara_nivel:Camera2D = $CameraNivel
 onready var contenedor_sector_meteoritos:Node
 onready var camara_player =$Player/CameraPlayer
+onready var contenedor_enemigos:Node
 #exports
 export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
 export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
+export var enemigo_interceptor:PackedScene = null
+
 
 export var tiempo_transicion_camara:float = 1.6
 
 var meteoritos_totales:int = 0
-
+var player:Player = null
 
 #Callbacks
 func _ready():
 	conectarSenales()
 	crearContenedores()
+	player = DatosJuego.get_player_actual()
 
 #Funcs
 func conectarSenales() -> void:
@@ -41,6 +45,9 @@ func crearContenedores() -> void:
 	contenedor_sector_meteoritos = Node.new()
 	contenedor_sector_meteoritos.name = "ContenedorSectorMeteoritos"
 	add_child(contenedor_sector_meteoritos)
+	contenedor_enemigos = Node.new()
+	contenedor_enemigos.name = "ContenedorEnemigos"
+	add_child(contenedor_enemigos)
 	
 func _on_disparo(p:Proyectil):
 	cont_proyectiles.add_child(p)
@@ -78,10 +85,8 @@ func _on_meteorito_destruido(pos: Vector2):
 func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_peligros:int):
 	if tipo_peligro == "Meteorito":
 		crear_sector_meteoritos(centro_cam, num_peligros)
-		pass
 	elif tipo_peligro == "Enemigo":
-		#Como arriba
-		pass
+		crear_sector_enemigos(num_peligros)
 
 func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int):
 	meteoritos_totales = numero_peligros
@@ -97,6 +102,12 @@ func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int):
 		camara_nivel,
 		tiempo_transicion_camara
 	)
+func crear_sector_enemigos(num_enemigos:int):
+	for i in range(num_enemigos):
+		var new_interceptor:EnemigoInterceptor = enemigo_interceptor.instance()
+		var spawn_pos:Vector2 = crear_posicion_aleatoria(1000.0,800.0)
+		new_interceptor.global_position = player.global_position + spawn_pos
+		contenedor_enemigos.add_child(new_interceptor)
 
 func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D, tiempo_transicion:float):
 	$TweenCamara.interpolate_property(

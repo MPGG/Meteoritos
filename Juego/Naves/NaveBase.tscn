@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Juego/Naves/NaveBase.gd" type="Script" id=1]
 [ext_resource path="res://Juego/Naves/Player/Canon.tscn" type="PackedScene" id=3]
-[ext_resource path="res://TemporalAssets/sci-fi-sounds/Audio/impactMetal_000.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Juego/Naves/impactMetal_000.ogg" type="AudioStream" id=4]
 
 [node name="NaveBase" type="RigidBody2D"]
 z_as_relative = false
