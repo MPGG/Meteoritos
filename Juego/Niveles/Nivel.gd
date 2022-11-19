@@ -33,7 +33,7 @@ func conectarSenales() -> void:
 	Eventos.connect("nave_destruida",self,"_on_Nave_Destruida")
 	Eventos.connect("spawn_meteorito",self,"_on_spawn_meteoritos")
 	Eventos.connect("meteorito_destruido",self,"_on_meteorito_destruido")
-	Eventos.connect("nave_en_sector_peligro",self,"_on_nave_en_sector_peligro")
+	Eventos.connect("base_destruida",self,"_on_base_destruida")
 
 func crearContenedores() -> void:
 	cont_proyectiles = Node.new()
@@ -148,4 +148,22 @@ func crear_posicion_aleatoria(rango_h:float, rango_v:float) -> Vector2:
 	var randx = rand_range(-rango_h, rango_h)
 	var randy = rand_range(-rango_v,rango_v)
 	return Vector2(randx,randy)
+	
+func _on_base_destruida(pos_partes:Array):
+	for pos in pos_partes:
+		crear_explosion(pos)
+		yield(get_tree().create_timer(0.5),"timeout")
+func crear_explosion(
+	posicion:Vector2,
+	numero:int = 1,
+	intervalo:float = 0.0,
+	rangos_aleatorios:Vector2 = Vector2(0.0,0.0)):
+		for i in range(numero):
+			var new_explosion:Node2D = explosion.instance()
+			new_explosion.global_position = posicion + crear_posicion_aleatoria(
+				rangos_aleatorios.x,
+				rangos_aleatorios.y
+			)
+			add_child(new_explosion)
+			yield(get_tree().create_timer(intervalo),"timeout")
 	

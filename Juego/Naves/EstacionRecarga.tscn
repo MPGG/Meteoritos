@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://TemporalAssets/uipack-space/PNG/dotWhite.png" type="Texture" id=1]
-[ext_resource path="res://TemporalAssets/kenney_spaceshooterextension/PNG/Sprites/Station/spaceStation_021.png" type="Texture" id=2]
+[ext_resource path="res://Juego/Naves/dotWhite-c.png" type="Texture" id=1]
+[ext_resource path="res://Juego/Naves/spaceStation_021.c.png" type="Texture" id=2]
 [ext_resource path="res://Juego/Naves/EstacionRecarga.gd" type="Script" id=3]
-[ext_resource path="res://TemporalAssets/sci-fi-sounds/Audio/slime_000.ogg" type="AudioStream" id=4]
-[ext_resource path="res://TemporalAssets/sci-fi-sounds/Audio/doorOpen_001.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Juego/Naves/slime_000-c.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Juego/Naves/doorOpen_001-c.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 61.5, 140.5 )

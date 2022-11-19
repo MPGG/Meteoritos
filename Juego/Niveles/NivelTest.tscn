@@ -3,7 +3,7 @@
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
-[ext_resource path="res://Juego/Enemigos/EnemyDummy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Naves/BaseEnemiga/BaseEnemiga.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Explosion/Explosion.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=7]
@@ -27,9 +27,6 @@ position = Vector2( 687, 416 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
-
-[node name="EnemyDummy" parent="." instance=ExtResource( 4 )]
-position = Vector2( -863, 1552 )
 
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
@@ -120,5 +117,10 @@ position = Vector2( 2277, -329 )
 position = Vector2( -520, 791 )
 tipo_peligro = "Enemigo"
 numero_peligros = 3
+
+[node name="ContenedorBasesEnemigas" type="Node" parent="."]
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 4 )]
+position = Vector2( -328, 62 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
