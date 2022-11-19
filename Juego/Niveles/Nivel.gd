@@ -14,18 +14,23 @@ export var meteorito:PackedScene = null
 export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
 export var enemigo_interceptor:PackedScene = null
+export var rele_masa:PackedScene = null
+
 
 
 export var tiempo_transicion_camara:float = 1.6
 
 var meteoritos_totales:int = 0
 var player:Player = null
+var numero_bases_enemigas:int = 0
 
 #Callbacks
 func _ready():
 	conectarSenales()
 	crearContenedores()
 	player = DatosJuego.get_player_actual()
+	numero_bases_enemigas = contabilizar_bases_enemigas()
+	
 
 #Funcs
 func conectarSenales() -> void:
@@ -161,6 +166,10 @@ func _on_base_destruida(_base,pos_partes:Array):
 	for pos in pos_partes:
 		crear_explosion(pos)
 		yield(get_tree().create_timer(0.5),"timeout")
+	numero_bases_enemigas -= 1
+	if numero_bases_enemigas == 0:
+		crear_rele()
+		
 func crear_explosion(
 	posicion:Vector2,
 	numero:int = 1,
@@ -178,3 +187,11 @@ func crear_explosion(
 	
 func _on_spawn_orbital(enemigo: EnemigoOrbital):
 	contenedor_enemigos.add_child(enemigo)
+
+func contabilizar_bases_enemigas() -> int:
+	return $ContenedorBasesEnemigas.get_child_count()
+	
+func crear_rele():
+	var new_rele_masa:ReleDeMasa = rele_masa.instance()
+	new_rele_masa.global_position = player.global_position + crear_posicion_aleatoria(1000.0,800.0)
+	add_child(new_rele_masa)
