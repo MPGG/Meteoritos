@@ -11,7 +11,7 @@ func _process(delta):
 	controlar_energia(desgaste * delta)
 	#energia += desgaste * delta
 	if energia <= 0.0:
-		print("escudo.gd: sin energia, desactivando...")
+		#print("escudo.gd: sin energia, desactivando...")
 		desactivar()
 
 func _ready():
@@ -51,7 +51,7 @@ func _on_Escudo_area_entered(area):
 
 func controlar_energia(consumo:float):
 	energia += consumo
-	print("Escudo.gd: Energia escudo: ", energia)
+	#print("Escudo.gd: Energia escudo: ", energia)
 	
 	if energia > energia_original:
 		energia = energia_original

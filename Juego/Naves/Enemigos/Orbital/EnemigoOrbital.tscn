@@ -30,8 +30,9 @@ collision_layer = 2
 collision_mask = 13
 mode = 3
 script = ExtResource( 3 )
-hitpoints = 20.0
+hitpoints = 10.0
 rango_max_ataque = 1400.0
+velocidad = 400.0
 
 [node name="Sprite" parent="." index="0"]
 rotation = 1.57079
@@ -44,9 +45,16 @@ shape = SubResource( 1 )
 
 [node name="Canon" parent="." index="2"]
 proyectil = ExtResource( 4 )
+cadencia_disparo = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 autoplay = "spawn"
 anims/spawn = SubResource( 2 )
+
+[node name="DetectorObstaculo" type="RayCast2D" parent="." index="5"]
+enabled = true
+cast_to = Vector2( 1500, 0 )
+collision_mask = 128
+collide_with_areas = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
