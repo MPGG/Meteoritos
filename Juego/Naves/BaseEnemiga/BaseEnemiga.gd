@@ -5,16 +5,19 @@ export var hitpoints:float = 50.0
 export var orbital:PackedScene = null
 export var numero_orbitales:int = 6
 export var intervalo_spawn:float = 1.8
+export(Array,PackedScene) var rutas
 
 onready var impacto_sfx:AudioStreamPlayer2D = $ImpactoSFX
 onready var timer_spawner:Timer = $TimerSpawnerEnemigos
 
 var esta_destruida:bool = false
 var posicion_spawn:Vector2 = Vector2.ZERO
+var ruta_seleccionada:Path2D
 
 func _ready():
 	timer_spawner.wait_time = intervalo_spawn
 	$AnimationPlayer.play(elegir_animacion_aleatoria())
+	seleccionar_ruta()
 
 func _process(delta):
 	var player_objetivo:Player = DatosJuego.get_player_actual()
@@ -58,13 +61,13 @@ func _on_AreaColision_body_entered(body):
 func spawnear_orbital():
 	numero_orbitales -= 1
 	#var pos_spawn:Vector2 = deteccion_cuadrante()
-	$RutaEnemigo.global_position = global_position
+	ruta_seleccionada.global_position = global_position
 	
 	var new_orbital:EnemigoOrbital = orbital.instance()
 	new_orbital.create(
 		global_position + posicion_spawn,
 		self,
-		$RutaEnemigo
+		ruta_seleccionada
 		)
 	Eventos.emit_signal("spawn_orbital",new_orbital)
 
@@ -78,21 +81,27 @@ func deteccion_cuadrante() -> Vector2:
 	var angulo_player:float = rad2deg(dir_player.angle())
 	
 	if abs(angulo_player) <= 45.0:
-		$RutaEnemigo.rotation_degrees = 180.0
+		ruta_seleccionada.rotation_degrees = 180.0
 		return $PosicionesSpawn/Este.position
 	elif abs(angulo_player) > 135.0 and abs(angulo_player) <= 180:
-		$RutaEnemigo.rotation_degrees = 0.0
+		ruta_seleccionada.rotation_degrees = 0.0
 		return $PosicionesSpawn/Oeste.position
 	elif abs(angulo_player) > 45.0 and abs(angulo_player) <= 135.0:
 		if sign(angulo_player) > 0:
-			$RutaEnemigo.rotation_degrees = 270.0
+			ruta_seleccionada.rotation_degrees = 270.0
 			return $PosicionesSpawn/Sur.position
 		else:
-			$RutaEnemigo.rotation_degrees = 90.0
+			ruta_seleccionada.rotation_degrees = 90.0
 			return $PosicionesSpawn/Norte.position
 		
 		
 	return $PosicionesSpawn/Norte.position
+	
+func seleccionar_ruta():
+	randomize()
+	var indice_ruta:int = randi() % rutas.size() - 1
+	ruta_seleccionada = rutas[indice_ruta].instance()
+	add_child(ruta_seleccionada)
 
 func _on_VisibilityNotifier2D_screen_entered():
 	#Spawnear orbitales...

@@ -7,3 +7,8 @@ func set_player_actual(player:Player):
 func get_player_actual()->Player:
 	return player_actual
 	
+func _ready():
+	Eventos.connect("nave_destruida",self,"_on_nave_destruida")
+func _on_nave_destruida(nave:NaveBase,_pos, _expl):
+	if nave is Player:
+		player_actual = null

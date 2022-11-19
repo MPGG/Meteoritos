@@ -12,7 +12,8 @@
 [ext_resource path="res://Juego/Naves/impactMetal_000.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Juego/Naves/Enemigos/Orbital/EnemigoOrbital.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Juego/Naves/BaseEnemiga/PosicionesSpawn.gd" type="Script" id=12]
-[ext_resource path="res://Juego/Naves/BaseEnemiga/RutaEnemigo.gd" type="Script" id=13]
+[ext_resource path="res://Juego/Naves/BaseEnemiga/Rutas/RutaEnemigo.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Juego/Naves/BaseEnemiga/Rutas/RutaEnemigo2.tscn" type="PackedScene" id=14]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -116,17 +117,13 @@ tracks/1/keys = {
 "values": [ Color( 0.737255, 0.0901961, 0.843137, 0 ) ]
 }
 
-[sub_resource type="Curve2D" id=9]
-_data = {
-"points": PoolVector2Array( 51.3946, -48.3512, -51.3946, 48.3512, 331.196, 403.482, 1.34353, 53.3363, -1.34353, -53.3363, 126.015, 492.757, 49.8154, 97.825, -49.8154, -97.825, -74.3391, 485.893, 62.7085, 6.45958, -62.7085, -6.45958, -254.233, 450.422, 41.8323, 17.1086, -41.8323, -17.1086, -410.816, 341.156, 61.8439, 73.6467, -61.8439, -73.6467, -473.424, 161.935, 36.8751, 56.9006, -36.8751, -56.9006, -521.448, -13.7767, -13.5018, 111.679, 13.5018, -111.679, -443.41, -245.757, 1.58764, 34.1552, -1.58764, -34.1552, -327.266, -392.456, -40.833, -24.9533, 40.833, 24.9533, -155.211, -491.965, -47.8369, -34.319, 47.8369, 34.319, -13.7726, -515.529, -62.0508, -11.5026, 62.0508, 11.5026, 210.405, -475.162, -53.0268, -58.2216, 53.0268, 58.2216, 407.467, -335.791, 18.062, -61.6117, -18.062, 61.6117, 502.136, -135.072, 55.6448, -9.10671, -55.6448, 9.10671, 509.982, 105.026, 57.5768, -24.9524, -57.5768, 24.9524, 450.015, 296.1, 51.825, -7.8715, -51.825, 7.8715, 337.255, 391.98 )
-}
-
 [node name="BaseEnemiga" type="Node2D"]
 rotation = 2.26195
 z_index = 5
 script = ExtResource( 7 )
 hitpoints = 100.0
 orbital = ExtResource( 11 )
+rutas = [ ExtResource( 14 ), ExtResource( 13 ) ]
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -221,14 +218,6 @@ position = Vector2( 346.76, 419.158 )
 
 [node name="Este" type="Position2D" parent="PosicionesSpawn"]
 position = Vector2( -339.111, -409.912 )
-
-[node name="RutaEnemigo" type="Path2D" parent="."]
-curve = SubResource( 9 )
-script = ExtResource( 13 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="RutaEnemigo"]
-position = Vector2( 331.196, 403.482 )
-rotation = 2.39633
 
 [node name="TimerSpawnerEnemigos" type="Timer" parent="."]
 
