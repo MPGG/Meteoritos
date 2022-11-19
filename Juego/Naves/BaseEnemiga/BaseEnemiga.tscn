@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Juego/Naves/BaseEnemiga/spaceStation_029-c.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/BaseEnemiga/spaceStation_023-c.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Juego/Enemigos/Area_colision_enemigo.gd" type="Script" id=8]
 [ext_resource path="res://Juego/Naves/BaseEnemiga/AreaAtraccion.gd" type="Script" id=9]
 [ext_resource path="res://Juego/Naves/impactMetal_000.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Juego/Naves/Enemigos/Orbital/EnemigoOrbital.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Juego/Naves/BaseEnemiga/PosicionesSpawn.gd" type="Script" id=12]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -118,6 +120,7 @@ rotation = 2.26195
 z_index = 5
 script = ExtResource( 7 )
 hitpoints = 100.0
+orbital = ExtResource( 11 )
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -198,6 +201,22 @@ stream = ExtResource( 10 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
+[node name="PosicionesSpawn" type="Node2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="Norte" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( -421.47, 348.672 )
+
+[node name="Sur" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 412.994, -341.661 )
+
+[node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 346.76, 419.158 )
+
+[node name="Este" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( -339.111, -409.912 )
+
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="body_entered" from="AreaAtraccion" to="AreaAtraccion" method="_on_AreaAtraccion_body_entered"]
 [connection signal="body_exited" from="AreaAtraccion" to="AreaAtraccion" method="_on_AreaAtraccion_body_exited"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]

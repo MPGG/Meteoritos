@@ -21,11 +21,11 @@ func get_escudo() -> Escudo:
 func _ready():
 	DatosJuego.set_player_actual(self)
 
-func _integrate_forces(state) -> void:
+func _integrate_forces(_state) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
 	apply_torque_impulse(dir_rotacion * potencia_rotacion)
 	pass
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	playerInput()
 
 func _unhandled_input(event) -> void:

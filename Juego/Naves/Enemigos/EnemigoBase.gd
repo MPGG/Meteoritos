@@ -6,10 +6,11 @@ var dir_player:Vector2
 
 func _ready():
 	player_objetivo = DatosJuego.get_player_actual()
+# warning-ignore:return_value_discarded
 	Eventos.connect("nave_destruida",self,"_on_nave_destruida")
 	#canon.set_esta_disparando(true)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	rotar_hacia_player()
 	
 func _on_body_entered(body: Node):

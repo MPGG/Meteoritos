@@ -10,6 +10,7 @@ func _ready():
 	zoom_original = zoom
 	
 func zoom_suavizado(zoomN_x:float,zoomN_y:float,tiempo_transicion:float):
+# warning-ignore:return_value_discarded
 	tween_zoom.interpolate_property(
 		self,
 		"zoom",
@@ -19,6 +20,7 @@ func zoom_suavizado(zoomN_x:float,zoomN_y:float,tiempo_transicion:float):
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
+# warning-ignore:return_value_discarded
 	tween_zoom.start()
 
 func devolver_zoom_original():

@@ -38,17 +38,17 @@ func _on_EnemigoInterceptor_body_entered(body):
 	_on_body_entered(body)
 
 
-func _on_AreaDisparo_body_entered(body):
+func _on_AreaDisparo_body_entered(_body):
 	controlador_estados_ia(ESTADO_IA.ATACANDOP) # Replace with function body.
 
 
-func _on_AreaDisparo_body_exited(body):
+func _on_AreaDisparo_body_exited(_body):
 	controlador_estados_ia(ESTADO_IA.PERSECUCION)
 
 
-func _on_AreaDeteccion_body_entered(body):
+func _on_AreaDeteccion_body_entered(_body):
 	controlador_estados_ia(ESTADO_IA.ATACANDOQ)
 
 
-func _on_AreaDeteccion_body_exited(body):
+func _on_AreaDeteccion_body_exited(_body):
 	controlador_estados_ia(ESTADO_IA.ATACANDOP)

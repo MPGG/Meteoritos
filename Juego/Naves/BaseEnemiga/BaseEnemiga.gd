@@ -2,6 +2,7 @@ class_name BaseEnemiga
 extends Node2D
 
 export var hitpoints:float = 30.0
+export var orbital:PackedScene = null
 
 onready var impacto_sfx:AudioStreamPlayer2D = $ImpactoSFX
 
@@ -9,7 +10,17 @@ var esta_destruida:bool = false
 
 func _ready():
 	$AnimationPlayer.play(elegir_animacion_aleatoria())
+
+func _process(delta):
+	var player_objetivo:Player = DatosJuego.get_player_actual()
+	if not player_objetivo:
+		return
 	
+	var dir_player:Vector2 = player_objetivo.global_position - global_position
+	var angulo_player:float = rad2deg(dir_player.angle())
+	#print("BaseEnemiga: anguloPlayer:",angulo_player)
+	
+
 func elegir_animacion_aleatoria()->String:
 	randomize()
 	var num_anim:int = $AnimationPlayer.get_animation_list().size() -1
@@ -30,7 +41,7 @@ func destruir():
 	var posicion_partes = []
 	for parte in $Sprites.get_children():
 		posicion_partes.append(parte.global_position)
-	Eventos.emit_signal("base_destruida",posicion_partes)
+	Eventos.emit_signal("base_destruida",self,posicion_partes)
 	queue_free()
 
 func _on_AreaColision_body_entered(body):
@@ -38,3 +49,42 @@ func _on_AreaColision_body_entered(body):
 		body.destruir()
 	elif body.has_method("destruirNave"):
 		body.destruirNave()
+
+func spawnear_orbital():
+	var pos_spawn:Vector2 = deteccion_cuadrante()
+	var new_orbital:EnemigoOrbital = orbital.instance()
+	new_orbital.create(global_position+pos_spawn,self)
+	Eventos.emit_signal("spawn_orbital",new_orbital)
+
+func deteccion_cuadrante() -> Vector2:
+	var player_objetivo:Player = DatosJuego.get_player_actual()
+	
+	if not player_objetivo:
+		return Vector2.ZERO
+	
+	var dir_player:Vector2 = player_objetivo.global_position - global_position
+	var angulo_player:float = rad2deg(dir_player.angle())
+	
+	if abs(angulo_player) <= 45.0:
+		return $PosicionesSpawn/Este.position
+	elif abs(angulo_player) > 135.0 and abs(angulo_player) <= 180:
+		return $PosicionesSpawn/Oeste.position
+	elif abs(angulo_player) > 45.0 and abs(angulo_player) <= 135.0:
+		if sign(angulo_player) > 0:
+			return $PosicionesSpawn/Sur.position
+		else:
+			return $PosicionesSpawn/Norte.position
+		
+		
+	return $PosicionesSpawn/Norte.position
+
+func _on_VisibilityNotifier2D_screen_entered():
+	#Spawnear orbitales...
+	$VisibilityNotifier2D.queue_free()
+	spawnear_orbital()
+#	var new_orbital:EnemigoOrbital = orbital.instance()
+#	new_orbital.create(
+#		global_position + $PosicionesSpawn/Norte.global_position,
+#		self
+#	)
+#	Eventos.emit_signal("spawn_orbital",new_orbital)

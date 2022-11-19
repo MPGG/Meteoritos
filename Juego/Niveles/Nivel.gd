@@ -29,11 +29,17 @@ func _ready():
 
 #Funcs
 func conectarSenales() -> void:
+# warning-ignore:return_value_discarded
 	Eventos.connect("proyectilDisparado",self,"_on_disparo")
+# warning-ignore:return_value_discarded
 	Eventos.connect("nave_destruida",self,"_on_Nave_Destruida")
+# warning-ignore:return_value_discarded
 	Eventos.connect("spawn_meteorito",self,"_on_spawn_meteoritos")
+# warning-ignore:return_value_discarded
 	Eventos.connect("meteorito_destruido",self,"_on_meteorito_destruido")
+# warning-ignore:return_value_discarded
 	Eventos.connect("base_destruida",self,"_on_base_destruida")
+	Eventos.connect("spawn_orbital",self,"_on_spawn_orbital")
 
 func crearContenedores() -> void:
 	cont_proyectiles = Node.new()
@@ -61,6 +67,7 @@ func _on_Nave_Destruida(nave: Player, pos:Vector2,num):
 			tiempo_transicion_camara
 		)
 	
+# warning-ignore:unused_variable
 	for i in range(num):
 		var new_expl:Node2D = explosion.instance()
 		new_expl.global_position = pos + crear_posicion_aleatoria(-50.0,50.0)
@@ -103,6 +110,7 @@ func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int):
 		tiempo_transicion_camara
 	)
 func crear_sector_enemigos(num_enemigos:int):
+# warning-ignore:unused_variable
 	for i in range(num_enemigos):
 		var new_interceptor:EnemigoInterceptor = enemigo_interceptor.instance()
 		var spawn_pos:Vector2 = crear_posicion_aleatoria(1000.0,800.0)
@@ -139,7 +147,7 @@ func controlar_meteoritos_restantes():
 
 
 
-func _on_TweenCamara_tween_completed(object: Object, key:NodePath):
+func _on_TweenCamara_tween_completed(object: Object, _key:NodePath):
 	if object.name == "CameraPlayer":
 		object.global_position = $Player.global_position
 
@@ -149,7 +157,7 @@ func crear_posicion_aleatoria(rango_h:float, rango_v:float) -> Vector2:
 	var randy = rand_range(-rango_v,rango_v)
 	return Vector2(randx,randy)
 	
-func _on_base_destruida(pos_partes:Array):
+func _on_base_destruida(_base,pos_partes:Array):
 	for pos in pos_partes:
 		crear_explosion(pos)
 		yield(get_tree().create_timer(0.5),"timeout")
@@ -158,6 +166,7 @@ func crear_explosion(
 	numero:int = 1,
 	intervalo:float = 0.0,
 	rangos_aleatorios:Vector2 = Vector2(0.0,0.0)):
+# warning-ignore:unused_variable
 		for i in range(numero):
 			var new_explosion:Node2D = explosion.instance()
 			new_explosion.global_position = posicion + crear_posicion_aleatoria(
@@ -167,3 +176,5 @@ func crear_explosion(
 			add_child(new_explosion)
 			yield(get_tree().create_timer(intervalo),"timeout")
 	
+func _on_spawn_orbital(enemigo: EnemigoOrbital):
+	contenedor_enemigos.add_child(enemigo)

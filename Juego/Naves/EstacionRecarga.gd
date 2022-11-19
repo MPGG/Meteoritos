@@ -15,7 +15,7 @@ func _unhandled_input(event):
 		
 	controlar_energia()
 	
-	print("EstacionRecarga.gd: Energia Estacion: ",energia)
+	#print("EstacionRecarga.gd: Energia Estacion: ",energia)
 	if event.is_action("recargar_escudo"):
 		nave_player.get_escudo().controlar_energia(radio_energia_entregada)
 	elif event.is_action("recargar_laser"):

@@ -12,5 +12,6 @@ func anim_random() -> String:
 	
 	return lista_anim[indice_anim_aleatoria]
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	queue_free()

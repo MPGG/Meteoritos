@@ -8,7 +8,7 @@ var dmg: float = 3.0
 func _physics_process(delta):
 	position += velocidad * delta
 
-func crear(pos: Vector2, dir: float, vel:float, dmg: int):
+func crear(pos: Vector2, dir: float, vel:float, _dmg: int):
 		position = pos
 		rotation = dir
 		velocidad = Vector2(vel,0).rotated(dir)

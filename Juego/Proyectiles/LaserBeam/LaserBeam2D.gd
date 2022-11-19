@@ -90,7 +90,7 @@ func cast_beam(delta) -> void:
 
 func controlar_energia(consumo:float):
 	energia += consumo
-	print("Laserbeam.gd: Energia Laser: ", energia)
+	#print("Laserbeam.gd: Energia Laser: ", energia)
 	if energia > energia_original:
 		energia = energia_original
 

@@ -15,6 +15,7 @@
 [ext_resource path="res://Juego/Naves/Enemigos/Interceptor/EnemigoInterceptor.tscn" type="PackedScene" id=13]
 
 [node name="NivelTest" type="Node2D"]
+rotation = 0.00167349
 script = ExtResource( 2 )
 explosion = ExtResource( 5 )
 meteorito = ExtResource( 6 )
@@ -24,6 +25,9 @@ enemigo_interceptor = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 687, 416 )
+potencia_motor = 20
+potencia_rotacion = 170
+estela_maxima = 150
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
