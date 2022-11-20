@@ -1,6 +1,10 @@
 class_name ReleDeMasa
 extends Node2D
 
+
+func _ready():
+	Eventos.emit_signal("minimapa_objeto_creado")
+
 func atraer_player(body:Node):
 	$Tween.interpolate_property(
 		body,

@@ -9,6 +9,10 @@ var player_en_zona:bool = false
 
 onready var sfx_carga:AudioStreamPlayer = $CargaSFX
 
+func _ready():
+	$BarraEnergia.max_value = energia
+	$BarraEnergia.value = energia
+	
 func _unhandled_input(event):
 	if not puede_recargar(event):
 		return
@@ -35,6 +39,7 @@ func controlar_energia():
 	energia -= radio_energia_entregada
 	if energia <= 0.0:
 		$VacioSFX.play()
+	$BarraEnergia.value = energia
 
 
 func _on_AreaRecarga_body_entered(body):

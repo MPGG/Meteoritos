@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Juego/Naves/NaveBase.gd" type="Script" id=1]
+[ext_resource path="res://Juego/Naves/BarraSalud.gd" type="Script" id=2]
 [ext_resource path="res://Juego/Naves/Player/Canon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juego/Naves/impactMetal_000.ogg" type="AudioStream" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.427451, 0.741176, 0.0941176, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.690196, 0.117647, 0.117647, 1 )
 
 [node name="NaveBase" type="RigidBody2D"]
 z_as_relative = false
@@ -21,4 +28,20 @@ rotation = 1.5708
 [node name="SfxHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
+[node name="BarraSalud" type="ProgressBar" parent="."]
+margin_left = -25.0
+margin_top = 16.0
+margin_right = 4.0
+margin_bottom = 19.0
+rect_rotation = -89.9999
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 20.0
+rounded = true
+percent_visible = false
+script = ExtResource( 2 )
+
+[node name="TweenVis" type="Tween" parent="BarraSalud"]
+
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
+[connection signal="tween_all_completed" from="BarraSalud/TweenVis" to="BarraSalud" method="_on_TweenVis_tween_all_completed"]

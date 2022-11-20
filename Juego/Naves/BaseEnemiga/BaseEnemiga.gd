@@ -17,6 +17,7 @@ var ruta_seleccionada:Path2D
 func _ready():
 	timer_spawner.wait_time = intervalo_spawn
 	$AnimationPlayer.play(elegir_animacion_aleatoria())
+	$BarraSalud.set_valores(hitpoints)
 	seleccionar_ruta()
 
 func _process(delta):
@@ -42,7 +43,7 @@ func recibir_dmg(dmg:float):
 		esta_destruida = true
 		destruir()
 		
-		
+	$BarraSalud.set_hitpoints_actual(hitpoints)
 	impacto_sfx.play()
 
 func destruir():
@@ -50,6 +51,7 @@ func destruir():
 	for parte in $Sprites.get_children():
 		posicion_partes.append(parte.global_position)
 	Eventos.emit_signal("base_destruida",self,posicion_partes)
+	Eventos.emit_signal("minimapa_objeto_destruido",self)
 	queue_free()
 
 func _on_AreaColision_body_entered(body):

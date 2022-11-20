@@ -16,7 +16,7 @@ friction = 0.0
 [sub_resource type="CircleShape2D" id=3]
 radius = 48.0
 
-[node name="Player" instance=ExtResource( 5 )]
+[node name="Player" groups=["minimapa"] instance=ExtResource( 5 )]
 z_index = 50
 collision_layer = 1
 collision_mask = 54
@@ -27,6 +27,9 @@ can_sleep = false
 linear_damp = 1.0
 angular_damp = 3.0
 script = ExtResource( 2 )
+potencia_motor = 20
+potencia_rotacion = 170
+estela_maxima = 150
 
 [node name="Sprite" parent="." index="0"]
 rotation = 1.5708

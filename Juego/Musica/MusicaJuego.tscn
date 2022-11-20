@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Juego/Musica/POL-race-duel-short.wav" type="AudioStream" id=1]
+[ext_resource path="res://Juego/Musica/POL-galactic-trek-short.wav" type="AudioStream" id=2]
+[ext_resource path="res://Juego/Musica/MusicaJuego.gd" type="Script" id=3]
+[ext_resource path="res://Juego/Niveles/sfx_shieldUp.ogg" type="AudioStream" id=4]
+
+[node name="MusicaJuego" type="Node"]
+script = ExtResource( 3 )
+
+[node name="MusicaNivel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Music"
+
+[node name="MusicaCombate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Music"
+
+[node name="TweenMusicOn" type="Tween" parent="."]
+
+[node name="TweenMusicOff" type="Tween" parent="."]
+
+[node name="MusicaMenuPrincipal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Music"
+
+[node name="BotonMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="tween_all_completed" from="TweenMusicOff" to="." method="_on_TweenMusicOff_tween_all_completed"]

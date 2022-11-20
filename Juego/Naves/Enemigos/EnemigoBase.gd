@@ -25,6 +25,8 @@ func _on_body_entered(body: Node):
 func _on_nave_destruida(nave: NaveBase, _pos,_expl):
 	if nave is Player:
 		player_objetivo = null
+	if nave.is_in_group("minimapa"):
+		Eventos.emit_signal("minimapa_objeto_destruido",nave)
 
 func rotar_hacia_player():
 	if player_objetivo:

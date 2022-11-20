@@ -16,12 +16,15 @@ var estado_actual:int = ESTADO.SPAWN
 onready var colisionador: CollisionShape2D = $CollisionShape2D
 onready var hit_sfx:AudioStreamPlayer = $SfxHit
 onready var canon = $Canon
+onready var barra_salud:ProgressBar = $BarraSalud
 
 
 
 #Callbacks
 func _ready() -> void:
 	cambiar_estado(estado_actual)
+	barra_salud.max_value = hitpoints
+	barra_salud.value = hitpoints
 	
 
 
@@ -57,6 +60,7 @@ func recibir_dmg(dmg:float):
 	hitpoints -= dmg
 	if hitpoints <= 0:
 		destruirNave()
+	barra_salud.controlar_barra(hitpoints,true)
 	hit_sfx.play()
 
 
@@ -64,3 +68,5 @@ func _on_Player_body_entered(body):
 	if body is Meteorito:
 		body.destruir()
 		destruirNave()
+
+

@@ -28,3 +28,6 @@ signal ocultar_energia_laser()
 
 signal cambio_energia_escudo(emax,eact)
 signal ocultar_energia_escudo()
+
+signal minimapa_objeto_creado()
+signal minimapa_objeto_destruido(obj)

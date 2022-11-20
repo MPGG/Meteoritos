@@ -8,6 +8,9 @@ export var potencia_max:float = 800.0
 
 var potencia_actual:float = 0.0
 
+func _ready():
+	Eventos.emit_signal("minimapa_objeto_creado")
+
 func _integrate_forces(state:Physics2DDirectBodyState):
 	linear_velocity += dir_player.normalized() * potencia_actual * state.get_step()
 	 

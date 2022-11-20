@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_shieldUp.ogg-0685894c6d7f2f3fff695d0efcb0b97b.oggstr"
+
+[deps]
+
+source_file="res://Juego/Niveles/sfx_shieldUp.ogg"
+dest_files=[ "res://.import/sfx_shieldUp.ogg-0685894c6d7f2f3fff695d0efcb0b97b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
