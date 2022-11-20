@@ -57,3 +57,4 @@ func controlar_energia(consumo:float):
 		energia = energia_original
 	elif energia <= 0.0:
 		desactivar()
+	Eventos.emit_signal("cambio_energia_escudo",energia_original,energia)

@@ -8,6 +8,7 @@ onready var camara_nivel:Camera2D = $CameraNivel
 onready var contenedor_sector_meteoritos:Node
 onready var camara_player =$Player/CameraPlayer
 onready var contenedor_enemigos:Node
+onready var actualizador_timer:Timer = $ActualizadorTimer
 #exports
 export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
@@ -15,6 +16,7 @@ export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
 export var enemigo_interceptor:PackedScene = null
 export var rele_masa:PackedScene = null
+export var tiempo_limite:int = 10
 
 
 
@@ -31,6 +33,9 @@ func _ready():
 	crearContenedores()
 	player = DatosJuego.get_player_actual()
 	numero_bases_enemigas = contabilizar_bases_enemigas()
+	Eventos.emit_signal("nivel_iniciado")
+	actualizador_timer.start()
+	Eventos.emit_signal("actualizar_tiempo",tiempo_limite)
 	
 
 #Funcs
@@ -46,6 +51,7 @@ func conectarSenales() -> void:
 # warning-ignore:return_value_discarded
 	Eventos.connect("base_destruida",self,"_on_base_destruida")
 	Eventos.connect("spawn_orbital",self,"_on_spawn_orbital")
+	Eventos.connect("nave_en_sector_peligro",self,"_on_nave_en_sector_peligro")
 
 func crearContenedores() -> void:
 	cont_proyectiles = Node.new()
@@ -72,6 +78,7 @@ func _on_Nave_Destruida(nave: Player, pos:Vector2,num):
 			camara_nivel,
 			tiempo_transicion_camara
 		)
+		$RestartTimer.start()
 	
 # warning-ignore:unused_variable
 	for i in range(num):
@@ -98,6 +105,7 @@ func _on_meteorito_destruido(pos: Vector2):
 func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_peligros:int):
 	if tipo_peligro == "Meteorito":
 		crear_sector_meteoritos(centro_cam, num_peligros)
+		Eventos.emit_signal("cambio_numero_meteoritos",num_peligros)
 	elif tipo_peligro == "Enemigo":
 		crear_sector_enemigos(num_peligros)
 
@@ -138,6 +146,7 @@ func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D, ti
 
 func controlar_meteoritos_restantes():
 	meteoritos_totales -= 1
+	Eventos.emit_signal("cambio_numero_meteoritos",meteoritos_totales)
 	#print("Nivel.gd:Metoeritos totales:" + str(meteoritos_totales))
 	if meteoritos_totales == 0:
 		contenedor_sector_meteoritos.get_child(0).queue_free()
@@ -205,3 +214,24 @@ func crear_rele():
 	
 	new_rele_masa.global_position = player.global_position + (margen+pos_aleatoria)
 	add_child(new_rele_masa)
+
+
+func _on_RestartTimer_timeout():
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0),"timeout")
+	get_tree().reload_current_scene()
+
+func destruir_nivel():
+	crear_explosion(
+		player.global_position,
+		2,
+		1.5,
+		Vector2(300.0,200.0)
+	)
+
+
+func _on_ActualizadorTimer_timeout():
+	tiempo_limite -= 1
+	Eventos.emit_signal("actualizar_tiempo",tiempo_limite)
+	if tiempo_limite == 0:
+		destruir_nivel()
