@@ -31,3 +31,5 @@ signal ocultar_energia_escudo()
 
 signal minimapa_objeto_creado()
 signal minimapa_objeto_destruido(obj)
+
+signal nivel_completado()

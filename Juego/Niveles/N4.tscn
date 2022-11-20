@@ -1,0 +1,97 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
+[ext_resource path="res://default_env.tres" type="Environment" id=3]
+[ext_resource path="res://Juego/Naves/BaseEnemiga/BaseEnemiga.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Explosion/Explosion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Juego/Meteoritos/MeteoritoExplosion/ExplosionMeteoro.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Juego/Niveles/Fondos/StarFieldBackground.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
+[ext_resource path="res://Juego/Naves/EstacionRecarga.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Juego/Naves/Enemigos/Interceptor/EnemigoInterceptor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Juego/Naves/Rele/ReleMasa.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Juego/HUD/HUD.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Juego/Musica/POL-race-duel-short.wav" type="AudioStream" id=16]
+[ext_resource path="res://Juego/Musica/POL-galactic-trek-short.wav" type="AudioStream" id=17]
+
+[node name="NivelTest" type="Node2D"]
+rotation = 0.00167349
+script = ExtResource( 2 )
+explosion = ExtResource( 5 )
+meteorito = ExtResource( 6 )
+explosion_meteorito = ExtResource( 8 )
+sector_meteoritos = ExtResource( 7 )
+enemigo_interceptor = ExtResource( 13 )
+rele_masa = ExtResource( 14 )
+tiempo_limite = 100
+mus_nivel = ExtResource( 17 )
+mus_combate = ExtResource( 16 )
+prox_nivel = "res://Juego/Niveles/N5.tscn"
+
+[node name="HUD" parent="." instance=ExtResource( 15 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 687, 416 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+
+[node name="TriggersLluviaMeteoritos" type="Node" parent="."]
+
+[node name="CameraNivel" type="Camera2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="TweenZoom" type="Tween" parent="CameraNivel"]
+
+[node name="TweenCamara" type="Tween" parent="."]
+
+[node name="ContenedorEstaciones" type="Node" parent="."]
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 12 )]
+position = Vector2( 395, 1439 )
+
+[node name="EstacionRecarga5" parent="ContenedorEstaciones" instance=ExtResource( 12 )]
+position = Vector2( 395, 1439 )
+
+[node name="EstacionRecarga2" parent="ContenedorEstaciones" instance=ExtResource( 12 )]
+position = Vector2( 385, -509 )
+rotation = 2.26362
+
+[node name="EstacionRecarga3" parent="ContenedorEstaciones" instance=ExtResource( 12 )]
+position = Vector2( -748, 342 )
+rotation = 2.26362
+
+[node name="EstacionRecarga4" parent="ContenedorEstaciones" instance=ExtResource( 12 )]
+position = Vector2( -748, 342 )
+rotation = 2.26362
+
+[node name="ContenedorTriggersInterceptores" type="Node" parent="."]
+
+[node name="ContenedorBasesEnemigas" type="Node" parent="."]
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 4 )]
+position = Vector2( -1623, 464 )
+
+[node name="BaseEnemiga3" parent="ContenedorBasesEnemigas" instance=ExtResource( 4 )]
+position = Vector2( 433, 2118 )
+
+[node name="BaseEnemiga4" parent="ContenedorBasesEnemigas" instance=ExtResource( 4 )]
+position = Vector2( 2980, 284 )
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" instance=ExtResource( 4 )]
+position = Vector2( 800, -1385 )
+rotation = 2.26362
+
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="ActualizadorTimer" type="Timer" parent="."]
+
+[node name="StarFieldBackground" parent="." instance=ExtResource( 9 )]
+
+[connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
+[connection signal="timeout" from="ActualizadorTimer" to="." method="_on_ActualizadorTimer_timeout"]

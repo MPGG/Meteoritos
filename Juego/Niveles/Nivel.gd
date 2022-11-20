@@ -20,6 +20,8 @@ export var tiempo_limite:int = 10
 export var mus_nivel:AudioStream = null
 export var mus_combate:AudioStream = null
 
+export(String, FILE, "*.tscn")var prox_nivel = ""
+
 
 
 export var tiempo_transicion_camara:float = 1.6
@@ -56,6 +58,7 @@ func conectarSenales() -> void:
 	Eventos.connect("base_destruida",self,"_on_base_destruida")
 	Eventos.connect("spawn_orbital",self,"_on_spawn_orbital")
 	Eventos.connect("nave_en_sector_peligro",self,"_on_nave_en_sector_peligro")
+	Eventos.connect("nivel_completado",self,"_on_nivel_completado")
 
 func crearContenedores() -> void:
 	cont_proyectiles = Node.new()
@@ -70,7 +73,11 @@ func crearContenedores() -> void:
 	contenedor_enemigos = Node.new()
 	contenedor_enemigos.name = "ContenedorEnemigos"
 	add_child(contenedor_enemigos)
-	
+
+func _on_nivel_completado():
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0),"timeout")
+	get_tree().change_scene(prox_nivel)
 func _on_disparo(p:Proyectil):
 	cont_proyectiles.add_child(p)
 
