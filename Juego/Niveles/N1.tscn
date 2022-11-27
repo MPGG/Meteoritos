@@ -48,27 +48,27 @@ tipo_peligro = "Meteorito"
 numero_peligros = 2
 
 [node name="SectorDePeligro2" parent="TriggersLluviaMeteoritos" instance=ExtResource( 10 )]
-position = Vector2( 148, 735 )
+position = Vector2( 110, 1265 )
 tipo_peligro = "Meteorito"
 numero_peligros = 2
 
 [node name="SectorDePeligro3" parent="TriggersLluviaMeteoritos" instance=ExtResource( 10 )]
-position = Vector2( -20, 642 )
+position = Vector2( -116, 714 )
 tipo_peligro = "Meteorito"
 numero_peligros = 2
 
 [node name="SectorDePeligro4" parent="TriggersLluviaMeteoritos" instance=ExtResource( 10 )]
-position = Vector2( 867, 729 )
+position = Vector2( 776, 1022 )
 tipo_peligro = "Meteorito"
 numero_peligros = 2
 
 [node name="SectorDePeligro5" parent="TriggersLluviaMeteoritos" instance=ExtResource( 10 )]
-position = Vector2( 1065, 630 )
+position = Vector2( 1163, 699 )
 tipo_peligro = "Meteorito"
 numero_peligros = 2
 
 [node name="SectorDePeligro6" parent="TriggersLluviaMeteoritos" instance=ExtResource( 10 )]
-position = Vector2( 1080, 396 )
+position = Vector2( 1478, 122 )
 tipo_peligro = "Meteorito"
 numero_peligros = 2
 
@@ -97,7 +97,7 @@ script = ExtResource( 11 )
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 12 )]
-position = Vector2( 809, 186 )
+position = Vector2( 957, 144 )
 
 [node name="ContenedorTriggersInterceptores" type="Node" parent="."]
 

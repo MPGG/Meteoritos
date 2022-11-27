@@ -16,7 +16,7 @@ export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
 export var enemigo_interceptor:PackedScene = null
 export var rele_masa:PackedScene = null
-export var tiempo_limite:int = 10
+export var tiempo_limite:int
 export var mus_nivel:AudioStream = null
 export var mus_combate:AudioStream = null
 
@@ -56,8 +56,11 @@ func conectarSenales() -> void:
 	Eventos.connect("meteorito_destruido",self,"_on_meteorito_destruido")
 # warning-ignore:return_value_discarded
 	Eventos.connect("base_destruida",self,"_on_base_destruida")
+# warning-ignore:return_value_discarded
 	Eventos.connect("spawn_orbital",self,"_on_spawn_orbital")
+# warning-ignore:return_value_discarded
 	Eventos.connect("nave_en_sector_peligro",self,"_on_nave_en_sector_peligro")
+# warning-ignore:return_value_discarded
 	Eventos.connect("nivel_completado",self,"_on_nivel_completado")
 
 func crearContenedores() -> void:
@@ -77,6 +80,7 @@ func crearContenedores() -> void:
 func _on_nivel_completado():
 	Eventos.emit_signal("nivel_terminado")
 	yield(get_tree().create_timer(1.0),"timeout")
+# warning-ignore:return_value_discarded
 	get_tree().change_scene(prox_nivel)
 func _on_disparo(p:Proyectil):
 	cont_proyectiles.add_child(p)
@@ -89,6 +93,7 @@ func _on_Nave_Destruida(nave: Player, pos:Vector2,num):
 			camara_nivel,
 			tiempo_transicion_camara
 		)
+		DatosJuego.lastPos = pos
 		$RestartTimer.start()
 	
 # warning-ignore:unused_variable
@@ -225,18 +230,19 @@ func crear_rele():
 		margen.y *= -1
 	
 	
-	new_rele_masa.global_position = player.global_position + (margen+pos_aleatoria)
+	new_rele_masa.global_position = DatosJuego.lastPos + (margen+pos_aleatoria)
 	add_child(new_rele_masa)
 
 
 func _on_RestartTimer_timeout():
 	Eventos.emit_signal("nivel_terminado")
 	yield(get_tree().create_timer(1.0),"timeout")
+# warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
 
 func destruir_nivel():
 	crear_explosion(
-		player.global_position,
+		DatosJuego.lastPos,
 		2,
 		1.5,
 		Vector2(300.0,200.0)

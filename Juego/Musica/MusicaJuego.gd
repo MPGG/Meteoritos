@@ -2,7 +2,7 @@ extends Node
 
 
 export var tiempo_transicion:float = 4.0
-export(float,-50.0,-20.0,5.0) var volumen_apagado = -40
+export(float,-50.0,-20.0,5.0) var volumen_apagado = -40.0
 
 onready var musica_nivel:AudioStreamPlayer = $MusicaNivel
 onready var musica_combate:AudioStreamPlayer = $MusicaCombate
@@ -56,7 +56,7 @@ func fade_in(mus:AudioStreamPlayer):
 	tween_on.start()
 	
 func fade_out(mus:AudioStreamPlayer):
-	var vol_orig = mus.volume_db
+	#var vol_orig = mus.volume_db
 	mus.volume_db = volumen_apagado
 	mus.play()
 	tween_on.interpolate_property(

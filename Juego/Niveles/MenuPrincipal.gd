@@ -8,7 +8,8 @@ func _ready():
 
 func _on_Button_pressed():
 	MusicaJuego.play_boton()
-	get_tree().change_scene("res://Juego/Niveles/NivelTest.tscn")
+# warning-ignore:return_value_discarded
+	get_tree().change_scene(nivel_inicial)
 
 
 func _on_ButtonSalir_pressed():

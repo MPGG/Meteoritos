@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/forceField_001.ogg-a00ef9c67acc6192b8ed047e7df25941.oggstr"
+
+[deps]
+
+source_file="res://Juego/Naves/Player/forceField_001.ogg"
+dest_files=[ "res://.import/forceField_001.ogg-a00ef9c67acc6192b8ed047e7df25941.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

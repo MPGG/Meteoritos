@@ -20,12 +20,14 @@ func _ready():
 	$BarraSalud.set_valores(hitpoints)
 	seleccionar_ruta()
 
+# warning-ignore:unused_argument
 func _process(delta):
 	var player_objetivo:Player = DatosJuego.get_player_actual()
 	if not player_objetivo:
 		return
 	
 	var dir_player:Vector2 = player_objetivo.global_position - global_position
+# warning-ignore:unused_variable
 	var angulo_player:float = rad2deg(dir_player.angle())
 	#print("BaseEnemiga: anguloPlayer:",angulo_player)
 	

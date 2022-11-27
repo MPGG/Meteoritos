@@ -17,6 +17,7 @@ func controlar_barra(hp_nave,mostrar):
 	value = hp_nave
 	
 	if not tween.is_active() and modulate.a != int(mostrar):
+# warning-ignore:return_value_discarded
 		tween.interpolate_property(
 			self,
 			"modulate",
@@ -26,6 +27,7 @@ func controlar_barra(hp_nave,mostrar):
 			Tween.TRANS_LINEAR,
 			Tween.EASE_IN_OUT
 		)
+# warning-ignore:return_value_discarded
 		tween.start()
 
 

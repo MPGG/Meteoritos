@@ -15,15 +15,25 @@ func fade_out():
 	$FadeCanvas/AnimationPlayer.play_backwards("fade_in")
 
 func conectar_seniales():
+# warning-ignore:return_value_discarded
 	Eventos.connect("nivel_iniciado",self,"fade_out")
+# warning-ignore:return_value_discarded
 	Eventos.connect("nivel_terminado",self,"fade_in")
+# warning-ignore:return_value_discarded
 	Eventos.connect("detecto_zona_recarga",self,"_on_detecto_zona_recarga")
+# warning-ignore:return_value_discarded
 	Eventos.connect("cambio_numero_meteoritos",self,"_on_actualizar_info_meteoritos")
+# warning-ignore:return_value_discarded
 	Eventos.connect("actualizar_tiempo",self,"_on_actualizar_info_tiempo")
+# warning-ignore:return_value_discarded
 	Eventos.connect("cambio_energia_laser",self,"_on_actualizar_energia_laser")
+# warning-ignore:return_value_discarded
 	Eventos.connect("ocultar_energia_laser",info_laser,"ocultar")
+# warning-ignore:return_value_discarded
 	Eventos.connect("cambio_energia_escudo",self,"_on_actualizar_energia_escudo")
+# warning-ignore:return_value_discarded
 	Eventos.connect("ocultar_energia_escudo",info_escudo,"ocultar")
+# warning-ignore:return_value_discarded
 	Eventos.connect("nave_destruida",self,"_on_nave_destruida")
 func _on_detecto_zona_recarga(en_zona:bool):
 	if en_zona:
@@ -36,6 +46,7 @@ func _on_actualizar_info_meteoritos(numero:int):
 		"Meteoritos Restantes: {cant}".format({"cant":numero})
 	)
 func _on_actualizar_info_tiempo(t:int):
+# warning-ignore:narrowing_conversion
 	var minutos:int = floor(t * 0.01666)
 	var segundos:int = t % 60
 	info_tiempo_restante.modificar_texto("Tiempo restante: %02d:%02d" % [minutos,segundos])

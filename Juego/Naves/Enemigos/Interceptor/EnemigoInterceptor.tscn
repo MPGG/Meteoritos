@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Juego/Naves/NaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Naves/Enemigos/Interceptor/EnemigoInterceptor.gd" type="Script" id=2]
-[ext_resource path="res://TemporalAssets/spaceshooter/PNG/Lasers/laserRed10.png" type="Texture" id=3]
+[ext_resource path="res://Juego/Naves/Enemigos/Interceptor/laserRed10.png" type="Texture" id=3]
 [ext_resource path="res://Juego/Naves/Enemigos/Interceptor/spaceShips_001.png" type="Texture" id=4]
 [ext_resource path="res://Juego/Proyectiles/ProyectilEnemigo.tscn" type="PackedScene" id=5]
 

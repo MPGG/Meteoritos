@@ -26,7 +26,7 @@ func _unhandled_input(event):
 		nave_player.get_laser().controlar_energia(radio_energia_entregada)
 	if event.is_action_released("recargar_escudo"):
 		Eventos.emit_signal("ocultar_energia_laser")
-	elif event.is_action_released("recarga_escudo"):
+	elif event.is_action_released("recargar_escudo"):
 		Eventos.emit_signal("ocultar_energia_escudo")
 
 func _on_AreaColision_body_entered(body: Node):

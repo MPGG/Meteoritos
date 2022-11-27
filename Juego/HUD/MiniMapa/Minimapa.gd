@@ -39,6 +39,7 @@ func _ready():
 	conectar_seniales()
 	
 
+# warning-ignore:unused_argument
 func _process (delta: float):
 	if not player:
 		return
@@ -51,9 +52,13 @@ func _on_nivel_iniciado():
 	set_process(true)
 	
 func conectar_seniales():
+# warning-ignore:return_value_discarded
 	Eventos.connect("nivel_iniciado", self, "_on_nivel_iniciado") 
-	Eventos.connect("nave_destruida", self, "on_nave_destruida")
+# warning-ignore:return_value_discarded
+	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
+# warning-ignore:return_value_discarded
 	Eventos.connect("minimapa_objeto_creado",self,"obtener_objetos_minimapa")
+# warning-ignore:return_value_discarded
 	Eventos.connect("minimapa_objeto_destruido",self,"quitar_icono")
 func modificar_posicion_iconos():
 	for i in items_mini_mapa:
@@ -96,6 +101,7 @@ func obtener_objetos_minimapa():
 func quitar_icono(obj:Node2D):
 	if obj in items_mini_mapa:
 		items_mini_mapa[obj].queue_free()
+# warning-ignore:return_value_discarded
 		items_mini_mapa.erase(obj)
 
 
